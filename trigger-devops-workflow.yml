@@ -3,16 +3,16 @@ name: Trigger DevOps Workflow
 on:
   push:
     branches:
-      - develop
+      - develop  # <-- this must match the branch you're pushing to
 
 jobs:
-  trigger:
+  trigger-devops:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger devops-workflows repo
-        run: |
-          curl -X POST \
-          -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer ${{ secrets.DEVOPS_WORKFLOW_TOKEN }}  \
-          https://api.github.com/repos/<aaishashaik>/devops-workflows/dispatches \
-          -d '{"event_type":"hello-world-trigger"}'
+      - name: Trigger DevOps workflow
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          token: ${{ secrets.DEVOPS_WORKFLOW_TOKEN }}  # <-- must match your secret name
+          repository: aaishashaik/devops-workflows  # <-- your DevOps repo
+          workflow: hello-world.yml  # <-- workflow filename in DevOps repo
+          ref: main  # <-- branch in DevOps repo where workflow lives
