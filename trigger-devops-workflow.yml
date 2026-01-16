@@ -15,4 +15,4 @@ jobs:
           token: ${{ secrets.DEVOPS_WORKFLOW_TOKEN }}  # <-- must match your secret name
           repository: aaishashaik/devops-workflows  # <-- your DevOps repo
           workflow: hello-world.yml  # <-- workflow filename in DevOps repo
-          ref: main  # <-- branch in DevOps repo where workflow lives
+          ref: devops-workflows  # <-- branch in DevOps repo where workflow lives
