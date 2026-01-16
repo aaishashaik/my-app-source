@@ -8,5 +8,5 @@ on:
 jobs:
   call-devops-workflow:
     uses: aaishashaik/devops-workflows/.github/workflows/hello-world.yml@main
-    with: {}
-
+    with:
+      environment: dev
