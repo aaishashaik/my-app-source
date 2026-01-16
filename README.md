@@ -1,3 +1,3 @@
 # my-app-source
-Testing GitHub Actions test
+Testing GitHub Actions test trigger
 
