@@ -6,17 +6,6 @@ on:
       - develop
 
 jobs:
-  trigger:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger devops-workflows repo
-        run: |
-          response=$(curl -X POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.DEVOPS_WORKFLOW_TOKEN }}" \
-            https://api.github.com/repos/aaishashaik/devops-workflows/dispatches \
-            -d '{"event_type":"hello-world-trigger"}' -w "\nHTTP status code: %{http_code}\n" -s -o /dev/null)
-          echo "$response"
-          
-
-
+  call-devops-workflow:
+    uses: aaishashaik/devops-workflows/.github/workflows/hello-world.yml@main
+    with: {}
